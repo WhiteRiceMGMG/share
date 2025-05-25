@@ -1,87 +1,74 @@
-/*それぞれN個，M個の2つの数列が与えられる．それぞれの数列から1つずつ要素を選んだ時の2つの値の差の最小値を求めてください．*/
-
 #include <stdio.h>
 #include <stdlib.h>
 
+// 比較関数（qsort用）
 int compare(const void *a, const void *b) {
     return (*(int *)a - *(int *)b);
 }
 
+// 絶対値を返す関数（if-elseで可読性アップ）
 int abs(int x) {
-    return x < 0 ? -x : x;
+    if (x < 0) {
+        return -x;
+    } else {
+        return x;
+    }
 }
 
 int main(void) {
     int n, m;
+
+    // 入力：2つの数列の長さ
     scanf("%d %d", &n, &m);
 
+    // メモリ確保
     int *A = (int *)malloc(sizeof(int) * n);
     int *B = (int *)malloc(sizeof(int) * m);
 
-    for (int i = 0; i < n; i++) scanf("%d", &A[i]);
-    for (int i = 0; i < m; i++) scanf("%d", &B[i]);
+    // 数列Aの入力
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &A[i]);
+    }
 
+    // 数列Bの入力
+    for (int i = 0; i < m; i++) {
+        scanf("%d", &B[i]);
+    }
+
+    // 数列A, Bをそれぞれ昇順にソート
     qsort(A, n, sizeof(int), compare);
     qsort(B, m, sizeof(int), compare);
 
-    int i = 0, j = 0;
-    int minDiff = 1000000000;
-
-    while (i < n && j < m) {
-        int diff = abs(A[i] - B[j]);
-        if (diff < minDiff) minDiff = diff;
-
-        if (A[i] < B[j]) i++;
-        else j++;
-    }
-
-    printf("%d\n", minDiff);
-
-    free(A);
-    free(B);
-    return 0;
-}
-
-
-
-/*
-#include <stdio.h>
-
-int main(void) {
-    int n = 0;
-    int m = 0;
+    // ポインタi, jを0からスタート
     int i = 0;
     int j = 0;
-    int min = 100000000;
-    int tempMin = 100000000;
 
-    scanf("%d %d",&n, &m);
-    int arrayA[n];
-    int arrayB[m];
+    // 最小値を非常に大きな値で初期化
+    int minDiff = 1000000000;
 
-    for(i = 0; i < n; i++) {
-        scanf("%d", &arrayA[i]);
-    }
-    
-    for(j = 0; j < m; j++) {
-        scanf("%d", &arrayB[j]);
-    }
+    // 2つの配列の末尾までポインタを進める
+    while (i < n && j < m) {
+        int diff = abs(A[i] - B[j]);
 
-    for(i = 0; i < n; i++) {
-        for(j = 0; j < m; j++) {
-            tempMin = arrayA[i] - arrayB[j];
-            if(tempMin < 0) {
-                tempMin = tempMin * (-1);
-                }
-            if(tempMin < min) {
-                min = tempMin;
-            }
+        // 最小値の更新
+        if (diff < minDiff) {
+            minDiff = diff;
+        }
+
+        // 小さい方のポインタを進める
+        if (A[i] < B[j]) {
+            i++;
+        } else {
+            j++;
         }
     }
 
-    printf("%d", min);
+    // 結果出力
+    printf("%d\n", minDiff);
+
+    // メモリ解放
+    free(A);
+    free(B);
 
     return 0;
 }
-*/
-
