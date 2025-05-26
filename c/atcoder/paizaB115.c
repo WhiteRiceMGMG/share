@@ -1,3 +1,25 @@
+/*
+
+2 3 2
+abc
+def
+ghi
+jkl
+3 3
+1 2 1
+2 1 2
+1 2 1
+出力例1
+abcghiabc
+defjkldef
+ghiabcghi
+jkldefjkl
+abcghiabc
+defjkldef
+
+*/
+
+
 #include <stdio.h>
 #define MAX_N 100
 #define MAX_H 10
@@ -21,11 +43,11 @@ int main(void){
     for(int i = 0; i < R; i++){
         for(int j = 0; j < C; j++){
             scanf("%d", &B[i][j]);
-            B[i][j]--;  // 0-based
+            B[i][j] = B[i][j] - 1; // 0-based
         }
     }
 
-    // 出力
+    // 出力　スタンプの横はHxRの長さ，
     for(int br = 0; br < R; br++){
         for(int si = 0; si < H; si++){
             for(int bc = 0; bc < C; bc++){
