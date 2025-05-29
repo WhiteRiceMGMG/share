@@ -1,7 +1,7 @@
 #include "database.h"
 
 int hundole_command(int command) {
-    Database *db
+    static Database db = {0};
     switch (command) {
         case 1:
             add_user(&db);
@@ -20,7 +20,26 @@ int hundole_command(int command) {
             break;
         default:
             printf("不正なコマンドです．");
-
-
     }
 }
+
+Database* add_user(Database* db) {
+
+}
+
+Database* delete_user(Database* db) {
+
+}
+
+Database* search_user(Database* db) {
+
+}
+
+void print_user_list(const Database* db){
+
+}
+
+void print_user(const Database* db) {
+    
+}
+
