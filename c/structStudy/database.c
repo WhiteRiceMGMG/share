@@ -46,6 +46,7 @@ Database* add_user(Database* db) {
     printf("INPUT YOUR AGE:\n");
     scanf("%d",userAge);    
 
+    index++;
 
 
 
