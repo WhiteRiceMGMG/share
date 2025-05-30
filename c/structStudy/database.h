@@ -9,7 +9,7 @@
 typedef struct {
     int userId[ARRAY_MAX+ 1];
     char userName[ARRAY_MAX + 1][NAME_MAX + 1];
-    char userJob[ARRAY_MAX + 1][JOB_MAX];
+    char userJob[ARRAY_MAX + 1][NAME_MAX + 1];
     char userBorn[ARRAY_MAX + 1][NAME_MAX + 1];
     int userAge[ARRAY_MAX + 1];
     int userCount;

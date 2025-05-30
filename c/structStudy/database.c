@@ -1,3 +1,5 @@
+#include <stdio.h>
+#include <string.h>
 #include "database.h"
 
 int hundole_command(int command) {
@@ -21,42 +23,32 @@ int hundole_command(int command) {
         default:
             printf("不正なコマンドです．");
     }
-
+}
 
 Database* add_user(Database* db) {
     int index = db->userCount;
 
-    char (*userName)[NAME_MAX + 1] = db->userName;
     printf("INPUT YOUR NAME:\n");
-    fgets(db->userName[index],NAME_MAX,stdin);
-    //fgets改行文字まで受け取り，これをヌル文字で置き換える．
-    db->userName[index][strcpn(db->userName[index],"\n")] = '\0';
-    
-    char (*userJob)[NAME_MAX + 1] = db->userJob;
+    fgets(db->userName[index], NAME_MAX, stdin);
+    db->userName[index][strcspn(db->userName[index], "\n")] = '\0';
+
     printf("INPUT YOUR JOB:\n");
-    fgets(db->userJob[index],NAME_MAX,stdin);
-    db->userJob[index][strcpn(db->userJob[index],"\n")] = '\0';
-    
-    char (*userBorn)[NAME_MAX + 1] = db->userBorn;
+    fgets(db->userJob[index], NAME_MAX, stdin);
+    db->userJob[index][strcspn(db->userJob[index], "\n")] = '\0';
+
     printf("INPUT YOUR BORN:\n");
-    fgets(db->userBorn[index],NAME_MAX,stdin);
-    db->userBorn[index][strxpn(db->userBorn[index],"\n")] = '\0';
+    fgets(db->userBorn[index], NAME_MAX, stdin);
+    db->userBorn[index][strcspn(db->userBorn[index], "\n")] = '\0';
 
-    int (*userAge) = db->userAge;
     printf("INPUT YOUR AGE:\n");
-    scanf("%d",userAge);    
+    while (getchar() != '\n');
+    scanf("%d", &db->userAge[index]);
 
-    index++;
+    db->userId[index] = index + 1;
 
+    db->userCount++;
 
-
-    char (*userBorn)[NAME_MAX + 1] = db->userBorn;
-    int userAge = db->userAge;
-
-
-    
-
-
+    return db;
 }
 
 Database* delete_user(Database* db) {
