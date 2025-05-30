@@ -24,6 +24,7 @@ int hundole_command(int command) {
 }
 
 Database* add_user(Database* db) {
+    
 
 }
 

@@ -11,7 +11,8 @@ typedef struct {
     char userName[ARRAY_MAX + 1][NAME_MAX + 1];
     char userJob[ARRAY_MAX + 1][JOB_MAX];
     char userBorn[ARRAY_MAX + 1][NAME_MAX + 1];
-    int userAge[ARRAY_MAX + 1];
+    int userAge[ARRAY_MAX + 1] = {0};
+    int userCount;
 } Database;
 
 int hundole_command(int command);
@@ -56,5 +57,5 @@ void print_user(const Database* db);
 　static を使えば関数内で一度だけ実体化して、以降も使い回せる。
 　実体が複数あると、それぞれ別物なので、変更が「消えたように見える」こともある。
 
-
+構造体で初期化はできない．宣言だけ．
 */
