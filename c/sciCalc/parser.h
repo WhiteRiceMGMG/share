@@ -6,7 +6,7 @@ typedef enum {
     TOKEN_OPERATOR
 } TokenType;
 
-typedef Token {
+typedef struct {
     TokenType type;
     double value; // TOKEN_NUMBER用
     char op;      // TOKEN_OPERATOR用

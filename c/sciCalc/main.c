@@ -28,7 +28,7 @@ int main(void) {
     printf("数式を入力してください：");
     fgets(input,sizeof(input),stdin);
 
-    struct Token tokens[3];
+    Token tokens[3];
     int token_count = tokenize(input, tokens);
     double result = evaluate(tokens, token_count);
     
