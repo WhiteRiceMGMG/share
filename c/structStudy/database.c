@@ -27,10 +27,26 @@ Database* add_user(Database* db) {
     int index = db->userCount;
 
     char (*userName)[NAME_MAX + 1] = db->userName;
-    printf("名前を入力してください");
+    printf("INPUT YOUR NAME:\n");
     fgets(db->userName[index],NAME_MAX,stdin);
     //fgets改行文字まで受け取り，これをヌル文字で置き換える．
     db->userName[index][strcpn(db->userName[index],"\n")] = '\0';
+    
+    char (*userJob)[NAME_MAX + 1] = db->userJob;
+    printf("INPUT YOUR JOB:\n");
+    fgets(db->userJob[index],NAME_MAX,stdin);
+    db->userJob[index][strcpn(db->userJob[index],"\n")] = '\0';
+    
+    char (*userBorn)[NAME_MAX + 1] = db->userBorn;
+    printf("INPUT YOUR BORN:\n");
+    fgets(db->userBorn[index],NAME_MAX,stdin);
+    db->userBorn[index][strxpn(db->userBorn[index],"\n")] = '\0';
+
+    int (*userAge) = db->userAge;
+    printf("INPUT YOUR AGE:\n");
+    scanf("%d",userAge);    
+
+
 
 
     char (*userBorn)[NAME_MAX + 1] = db->userBorn;
