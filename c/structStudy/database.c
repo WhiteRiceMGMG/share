@@ -21,11 +21,23 @@ int hundole_command(int command) {
         default:
             printf("不正なコマンドです．");
     }
-}
+
 
 Database* add_user(Database* db) {
-    Database* db;
-    int userId = db->userCount;
+    int index = db->userCount;
+
+    char (*userName)[NAME_MAX + 1] = db->userName;
+    printf("名前を入力してください");
+    fgets(db->userName[index],NAME_MAX,stdin);
+    //fgets改行文字まで受け取り，これをヌル文字で置き換える．
+    db->userName[index][strcpn(db->userName[index],"\n")] = '\0';
+
+
+    char (*userBorn)[NAME_MAX + 1] = db->userBorn;
+    int userAge = db->userAge;
+
+
+    
 
 
 }
