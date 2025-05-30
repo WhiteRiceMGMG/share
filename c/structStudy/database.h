@@ -11,7 +11,7 @@ typedef struct {
     char userName[ARRAY_MAX + 1][NAME_MAX + 1];
     char userJob[ARRAY_MAX + 1][JOB_MAX];
     char userBorn[ARRAY_MAX + 1][NAME_MAX + 1];
-    int userAge[ARRAY_MAX + 1] = {0};
+    int userAge[ARRAY_MAX + 1];
     int userCount;
 } Database;
 

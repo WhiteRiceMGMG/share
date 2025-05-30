@@ -24,7 +24,9 @@ int hundole_command(int command) {
 }
 
 Database* add_user(Database* db) {
-    
+    Database* db;
+    int userId = db->userCount;
+
 
 }
 
